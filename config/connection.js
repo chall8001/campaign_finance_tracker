@@ -1,5 +1,7 @@
 const mysql = require('mysql')
 //create connection object 
+
+module.exports = (app) => {
 const connection = mysql.createConnection({
     host: 'localhost',
     port: 3306, 
@@ -14,7 +16,7 @@ connection.connect((err) => {
         console.error(`error connecting: ${err.stack}`);
         return
     }
-    console.log(`connected as id ${connection.threadID}`)
+    console.log(`connected as id ${connection.threadId}`)
 })
 
-
+}
