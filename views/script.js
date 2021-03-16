@@ -23,19 +23,23 @@ console.log("hello world")
 $(document).ready(function(){
 // Get value on button click and show alert
 $("#myBtn").click(function(){
-var str = $("#myInput").val();
+const str = $("#myInput").val();
+const obj = {
+  test: str,
+}
 console.log(str)
+console.log(obj)
+
 
 fetch('/api/person', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(str)
-  })
-  
-
-
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  },
+  body: JSON.stringify(obj),
+})
+  .then((res) => res.json())
 
 })
 

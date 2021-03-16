@@ -6,6 +6,7 @@ module.exports = (app) => {
       });  
 
     app.post('/api/person', (req, res) => {
-        res.json()
+        res.json("received")
+        console.log(req)
     })
 }
