@@ -23,12 +23,12 @@ console.log("hello world")
 $(document).ready(function(){
 // Get value on button click and show alert
 $("#myBtn").click(function(){
-const array2 = [""]
+// const array2 = [""]
 const str = $("#myInput").val();
 var res = str.split(" ")
-array2.push(res)
-array2.splice(0, 0, array2[1])
-console.log(array2)
+// array2.push(res)
+// array2.splice(0, 0, array2[1])
+// console.log(array2)
 
 
 // var arr2 = ['a', 'b', 'c', 'd', 'e', 'f'];
@@ -38,8 +38,8 @@ console.log(array2)
 const obj = {
   name: str,
 }
-console.log(str)
-console.log(obj)
+// console.log(str)
+// console.log(obj)
 
 
 fetch('/api/person', {
@@ -49,11 +49,8 @@ fetch('/api/person', {
     'Accept': 'application/json'
   },
   body: JSON.stringify(obj),
-})
-  .then((res) => res.json())
+}).then((res) => console.log(res))
 
 })
-
 })
-
 

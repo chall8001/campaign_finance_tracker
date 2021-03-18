@@ -8,7 +8,6 @@ module.exports = (app) => {
       });  
 
     app.post('/api/person', (req, res) => {
-        res.json("received")
         console.log(req.body)
         connection.query('SELECT * FROM politicanNames WHERE CRPName = (?)', [req.body.name], (err, res) => {
             if (err) throw err;
@@ -17,7 +16,9 @@ module.exports = (app) => {
             connection.end();
         
         })
-        
+        var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+        console.log({ id: person});
+        res.json("Hellow");
         })
     }
     
