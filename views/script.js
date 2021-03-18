@@ -23,9 +23,20 @@ console.log("hello world")
 $(document).ready(function(){
 // Get value on button click and show alert
 $("#myBtn").click(function(){
+const array2 = [""]
 const str = $("#myInput").val();
+var res = str.split(" ")
+array2.push(res)
+array2.splice(0, 0, array2[1])
+console.log(array2)
+
+
+// var arr2 = ['a', 'b', 'c', 'd', 'e', 'f'];
+// arr = arr2.splice(0, arr2.indexOf('c'));
+
+
 const obj = {
-  test: str,
+  name: str,
 }
 console.log(str)
 console.log(obj)

@@ -14,7 +14,6 @@ app.use(express.static("views"));
 
 
 require('./controllers/route_controller.js')(app);
-require('./config/connection.js')(app);
 
 app.listen(PORT, () => {
   console.log(`App listening on PORT: ${PORT}`);
