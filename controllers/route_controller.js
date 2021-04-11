@@ -14,9 +14,9 @@ module.exports = (app) => {
          connection.query('SELECT * FROM politicanNames WHERE CRPName = (?)', [req.body.name], (err, result) => {
             if (err) throw err;
             console.log(result);
-            res.json(result);
+            res.json(result)
             // connection.end();
-        })
+        }) 
         })
     }
     

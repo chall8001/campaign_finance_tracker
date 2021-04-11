@@ -1,6 +1,9 @@
 $(document).ready(function(){
+
+
 // Get value on button click and show alert
 $("#myBtn").click(function(){
+let btn2 = $("<button>").attr("id", "btn2").text("clear") 
 
 let str = $("#myInput").val();
 
@@ -15,7 +18,6 @@ for (i = 0; i < check.length; i++) {
     || check[i] == special[4]) {
     console.log("invalid charachters")
     let warning = $("<p>").attr("class","card-text").text("Please Enter a Name Using the Correct Format")
-    let btn2 = $("<button>").attr("id", "btn2").text("clear") 
     $("#main").append(warning).append(btn2)
     $("#btn2").click(function(){
       location.reload()
@@ -42,17 +44,19 @@ fetch('/api/person', {
     'Accept': 'application/json'
   },
   body: JSON.stringify(obj),
-}).then((response) => response.json())
-
+})
+.then(function(response) {
+  if (!response.ok) {
+      throw Error(response.statusText);
+  }
+  return response;
+})
+.then((response) => response.json())
 .then((data) => {
   console.log(data[0].CID);
   const cid = data[0].CID 
   const apiKey = "74061eb284d7d0766c70019e5ddd2ba5"
-
   const queryURL = `https://www.opensecrets.org/api/?method=candContrib&cid=${cid}&cycle=2020&apikey=${apiKey}&output=json`
-
-  
-
 
   $.ajax({
 
@@ -60,8 +64,9 @@ fetch('/api/person', {
     method: 'GET',
 
 }).then(function (data) {
-  if (data == null){console.log("no data")}
+  
   const infoEl = JSON.parse(data)
+  
 
     console.log(infoEl["response"]["contributors"]["contributor"]["0"]["@attributes"])
     let repName = $("<h3>").attr("class","card-text")
@@ -93,14 +98,25 @@ fetch('/api/person', {
 
 
     $("#main").append(repName).append(org1).append(org2).append(org3).append(org4).append(org5).append(org6).append(org7).append(org8).append(org9).append(org10).append(btn2)
-
+    $("#main").append(btn2)
     $("#btn2").click(function(){
       location.reload()
-    })
+    })  
 
     
     });
-})
+}).catch(function(error) {
+  console.log(error)
+  notFound();
+});
+
+function notFound(){
+  let nf = $("<p>").attr("class","card-text").text("We were unable to find that politician-- please enter another or try again later.")
+  $("#main").append(nf).append(btn2)
+  $("#btn2").click(function(){
+    location.reload()
+  })  
+}
 
 })
 })
