@@ -1,27 +1,32 @@
-
-var queryURL = 'https://www.opensecrets.org/api/?method=candContrib&cid=N00001971&cycle=2020&apikey=74061eb284d7d0766c70019e5ddd2ba5'
-
-$.ajax({
-
-    url: queryURL,
-    method: 'GET'
-
-}).then(function (response) {
-
-    console.log(response)
-
-    });
-
-
 $(document).ready(function(){
 // Get value on button click and show alert
 $("#myBtn").click(function(){
-//get the value of the user input
-//split the string into first name and last name
-//reverse the order of the names and concatinate with a comma
-
 
 let str = $("#myInput").val();
+
+
+let check = str.split("")
+let special = ["!","`",",",".","?"]
+for (i = 0; i < check.length; i++) { 
+  if (check[i] == special[0] 
+    || check[i] == special[1]
+    || check[i] == special[2]
+    || check[i] == special[3]
+    || check[i] == special[4]) {
+    console.log("invalid charachters")
+    let warning = $("<p>").attr("class","card-text").text("Please Enter a Name Using the Correct Format")
+    let btn2 = $("<button>").attr("id", "btn2").text("clear") 
+    $("#main").append(warning).append(btn2)
+    $("#btn2").click(function(){
+      location.reload()
+    })  
+    return
+   
+
+  }
+}
+
+
 let splitStr = str.split(" ")
 let reversed = splitStr.reverse()
 const obj = {
@@ -29,12 +34,6 @@ const obj = {
 }
 
 console.log(reversed)
-
-
-
-
-
-
 
 fetch('/api/person', {
   method: 'POST',
@@ -44,6 +43,7 @@ fetch('/api/person', {
   },
   body: JSON.stringify(obj),
 }).then((response) => response.json())
+
 .then((data) => {
   console.log(data[0].CID);
   const cid = data[0].CID 
@@ -60,6 +60,7 @@ fetch('/api/person', {
     method: 'GET',
 
 }).then(function (data) {
+  if (data == null){console.log("no data")}
   const infoEl = JSON.parse(data)
 
     console.log(infoEl["response"]["contributors"]["contributor"]["0"]["@attributes"])
@@ -74,7 +75,7 @@ fetch('/api/person', {
     let org8 = $("<p>").attr("class","card-text") 
     let org9 = $("<p>").attr("class","card-text") 
     let org10 = $("<p>").attr("class","card-text") 
-    let btn2 = $("<button>").attr("id", "btn2")    
+    
 
 
     repName.text(infoEl["response"]["contributors"]["@attributes"]["cand_name"])
@@ -88,7 +89,7 @@ fetch('/api/person', {
     org8.text(infoEl["response"]["contributors"]["contributor"]["7"]["@attributes"]["org_name"]+":"+" $"+infoEl["response"]["contributors"]["contributor"]["7"]["@attributes"]["total"])
     org9.text(infoEl["response"]["contributors"]["contributor"]["8"]["@attributes"]["org_name"]+":"+" $"+infoEl["response"]["contributors"]["contributor"]["8"]["@attributes"]["total"])
     org10.text(infoEl["response"]["contributors"]["contributor"]["9"]["@attributes"]["org_name"]+":"+" $"+infoEl["response"]["contributors"]["contributor"]["9"]["@attributes"]["total"])
-    btn2.text("Search Again")
+  
 
 
     $("#main").append(repName).append(org1).append(org2).append(org3).append(org4).append(org5).append(org6).append(org7).append(org8).append(org9).append(org10).append(btn2)
