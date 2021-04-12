@@ -1,9 +1,19 @@
 $(document).ready(function(){
 
+ function createClear(){
+  if (typeof btn2 == 'undefined') {
+    // the variable is defined
+
+  let btn2 = $("<button>").attr("id", "btn2").text("clear") 
+  $("#main").append(btn2)
+    $("#btn2").click(function(){
+      location.reload()
+    })  
+  } else { console.log("there is already a button")}
+ } 
 
 // Get value on button click and show alert
 $("#myBtn").click(function(){
-let btn2 = $("<button>").attr("id", "btn2").text("clear") 
 
 let str = $("#myInput").val();
 
@@ -18,10 +28,8 @@ for (i = 0; i < check.length; i++) {
     || check[i] == special[4]) {
     console.log("invalid charachters")
     let warning = $("<p>").attr("class","card-text").text("Please Enter a Name Using the Correct Format")
-    $("#main").append(warning).append(btn2)
-    $("#btn2").click(function(){
-      location.reload()
-    })  
+    $("#main").append(warning)
+    createClear()
     return
    
 
@@ -67,7 +75,7 @@ fetch('/api/person', {
   
   const infoEl = JSON.parse(data)
   
-
+  createClear()
     console.log(infoEl["response"]["contributors"]["contributor"]["0"]["@attributes"])
     let repName = $("<h3>").attr("class","card-text")
     let org1 = $("<p>").attr("class","card-text")
@@ -98,11 +106,7 @@ fetch('/api/person', {
 
 
     $("#main").append(repName).append(org1).append(org2).append(org3).append(org4).append(org5).append(org6).append(org7).append(org8).append(org9).append(org10).append(btn2)
-    $("#main").append(btn2)
-    $("#btn2").click(function(){
-      location.reload()
-    })  
-
+   
     
     });
 }).catch(function(error) {
@@ -112,10 +116,9 @@ fetch('/api/person', {
 
 function notFound(){
   let nf = $("<p>").attr("class","card-text").text("We were unable to find that politician-- please enter another or try again later.")
-  $("#main").append(nf).append(btn2)
-  $("#btn2").click(function(){
-    location.reload()
-  })  
+  $("#main").append(nf)
+  createClear()
+  
 }
 
 })

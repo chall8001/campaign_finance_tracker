@@ -1,4 +1,15 @@
 {
+  "developtment": {
+    "username": "root",
+    "password": "",
+    "database": "politican_db",
+    "host": "3000",
+    "dialect": "mysql"
+  },
+  "production":{
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
+  },
   "name": "deep_money_web_app",
   "version": "1.0.0",
   "description": "",
