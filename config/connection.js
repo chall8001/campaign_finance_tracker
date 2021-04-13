@@ -3,7 +3,7 @@ const mysql = require('mysql')
 
 //connection
 
-if(process.env.JAWSDB_URL) {
+if (process.env.JAWSDB_URL) {
 var connection = mysql.createConnection(process.env.JAWSDB_URL)
 } else {
 var connection = mysql.createConnection({
@@ -16,13 +16,7 @@ var connection = mysql.createConnection({
 }
 
 
-connection.connect((err) => {
-    if (err){
-        console.error(`error connecting: ${err.stack}`);
-        return
-    }
-    console.log(`connected as id ${connection.threadId}`)
-})
+connection.connect()
 
 
 module.exports = connection;
