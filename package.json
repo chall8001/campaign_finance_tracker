@@ -1,12 +1,23 @@
 {
-  "developtment": {
-    "username": "root",
-    "password": "",
-    "database": "politican_db",
-    "host": "127.0.0.1",
+  "development": {
+    "username": "lg09pmh9oincugsm",
+    "password": "iws8ehx5vhotm8po",
+    "database": "uj38d0iaud0x9hm3",
+    "host": "td5l74lo6615qq42.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "lg09pmh9oincugsm",
+    "password": "iws8ehx5vhotm8po",
+    "database": "uj38d0iaud0x9hm3",
+    "host": "td5l74lo6615qq42.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "production":{
+    "username": "lg09pmh9oincugsm",
+    "password": "iws8ehx5vhotm8po",
+    "database": "uj38d0iaud0x9hm3",
+    "host": "td5l74lo6615qq42.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   },
