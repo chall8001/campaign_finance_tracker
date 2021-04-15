@@ -1,5 +1,5 @@
 # campaign_finance_tracker
-The Campaign Finance Tracker is a full-stack appliaction that allows constituents to see their federal representatives' largest campaign donors. All data is taken from [the Center for Responsive Politics](https://www.opensecrets.org). 
+The Campaign Finance Tracker is a full-stack appliaction that allows constituents to see their federal representatives' largest campaign donors. All data is taken from the Center for Responsive Politics. 
 
 Demo: (https://drive.google.com/file/d/10GC1DwigiiyA3U-EqeumcIeELhVOBBzS/view?usp=sharing)
 
